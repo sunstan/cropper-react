@@ -1,5 +1,7 @@
 # Profile image cropper with face detection
 
+[View demo](https://cropper-react-hmdu.vercel.app/)
+
 - React (CRA)
 - Redux
 - Redux Persist
