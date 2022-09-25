@@ -1,0 +1,15 @@
+.root {
+  @apply relative;
+}
+
+.root .icon {
+  @apply w-5 h-5;
+  @apply cursor-pointer;
+  @apply text-slate-500;
+  @apply transition-colors;
+  @apply hover:text-slate-900;
+}
+
+:global(.dark) .root .icon {
+  @apply text-white/50 hover:text-white;
+}

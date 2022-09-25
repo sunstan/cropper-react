@@ -1,0 +1,45 @@
+.root {
+  @apply rounded;
+  @apply w-full h-80;
+  @apply bg-slate-500/5;
+  @apply transition-colors;
+  @apply border-2 border-dashed;
+  @apply flex items-center justify-center flex-col gap-4;
+}
+
+.root.default {
+  @apply border-slate-200;
+}
+
+:global(.dark) .root.default {
+  @apply border-slate-700;
+}
+
+.root.isDragging {
+  @apply bg-blue-500/5;
+  @apply border-blue-500;
+}
+
+.root .text {
+  @apply text-slate-500;
+}
+
+:global(.dark) .root .text {
+  @apply text-slate-400;
+}
+
+.root .button {
+  @apply rounded;
+  @apply h-12 px-6;
+  @apply bg-blue-500;
+  @apply select-none;
+  @apply cursor-pointer;
+  @apply transition-colors;
+  @apply inline-flex items-center justify-center;
+  @apply text-xs font-semibold text-white uppercase tracking-wider;
+  @apply hover:bg-blue-400;
+}
+
+.root .button.isDragging {
+  @apply pointer-events-none;
+}

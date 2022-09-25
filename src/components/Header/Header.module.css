@@ -1,0 +1,4 @@
+.root {
+  @apply flex gap-6;
+  @apply fixed top-5 right-5 z-50;
+}

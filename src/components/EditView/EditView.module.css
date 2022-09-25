@@ -1,0 +1,14 @@
+.root {
+  @apply select-none;
+  @apply w-full max-w-3xl;
+  @apply flex flex-col items-center gap-10;
+}
+
+.root .button {
+  @apply cursor-pointer;
+  @apply text-xs font-semibold text-slate-900 uppercase tracking-wider;
+}
+
+:global(.dark) .root .button {
+  @apply text-white;
+}

@@ -1,0 +1,21 @@
+.root {
+  @apply relative;
+  @apply rounded-full;
+  @apply flex shrink-0;
+  @apply aspect-square;
+  @apply w-60 max-w-full;
+  @apply overflow-hidden;
+}
+
+.root .image {
+  @apply absolute;
+  @apply object-cover;
+}
+
+.actions {
+  @apply grid gap-4;
+}
+
+.actions.hasImage {
+  @apply grid-cols-2;
+}

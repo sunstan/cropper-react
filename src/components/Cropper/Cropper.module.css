@@ -1,0 +1,72 @@
+.root {
+  @apply select-none;
+  @apply w-[var(--width)];
+  @apply flex flex-col gap-4;
+}
+
+.root .box {
+  @apply relative;
+  @apply touch-none;
+  @apply rounded-md;
+  @apply bg-slate-200;
+  @apply overflow-hidden;
+  @apply m-[var(--margins)];
+  @apply scale-[var(--ui-ratio)];
+  @apply w-[var(--width)] h-[var(--height)];
+}
+
+.root .box .loader {
+  @apply text-white;
+  @apply absolute z-20;
+  @apply w-full h-full;
+  @apply pointer-events-none;
+  @apply bg-slate-900 bg-opacity-80;
+  @apply flex items-center justify-center;
+}
+
+.root .box .overlay {
+  @apply text-white;
+  @apply w-full h-full;
+  @apply absolute z-10;
+  @apply pointer-events-none;
+}
+
+:global(.dark) .root .box .overlay {
+  @apply text-black;
+}
+
+.root .box .image {
+  @apply max-w-none;
+  @apply transform origin-top-left;
+}
+
+.root .controls {
+  @apply flex gap-3;
+}
+
+.root .controls .icon {
+  @apply w-5 h-5;
+  @apply cursor-pointer;
+  @apply text-slate-500;
+  @apply transition-colors;
+  @apply hover:text-slate-900;
+}
+
+:global(.dark) .root .controls .icon {
+  @apply text-white/50 hover:text-white;
+}
+
+.root .error {
+  @apply rounded;
+  @apply text-sm;
+  @apply px-6 py-4;
+  @apply bg-red-500;
+  @apply bg-opacity-5;
+  @apply text-red-500;
+  @apply border border-red-500;
+  @apply flex items-center justify-center;
+}
+
+.root .button.isDetecting {
+  @apply pointer-events-none;
+}

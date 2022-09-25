@@ -1,0 +1,48 @@
+.root {
+  @apply relative;
+}
+
+.root .icon {
+  @apply w-5 h-5;
+  @apply cursor-pointer;
+  @apply text-slate-500;
+  @apply transition-colors;
+  @apply hover:text-slate-900;
+}
+
+:global(.dark) .root .icon {
+  @apply text-white/50 hover:text-white;
+}
+
+.root .container {
+  @apply py-1;
+  @apply mt-2;
+  @apply bg-white;
+  @apply shadow-md;
+  @apply rounded-md;
+  @apply absolute top-full right-0;
+}
+
+:global(.dark) .root .container {
+  @apply bg-slate-800;
+}
+
+.root .container .item {
+  @apply px-4 py-2;
+  @apply cursor-pointer;
+  @apply bg-transparent;
+  @apply transition-colors;
+  @apply hover:bg-slate-100;
+}
+
+:global(.dark) .root .container .item {
+  @apply hover:bg-slate-700;
+}
+
+.root .container .item span {
+  @apply text-xs text-slate-900;
+}
+
+:global(.dark) .root .container .item span {
+  @apply text-white;
+}

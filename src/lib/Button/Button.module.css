@@ -1,0 +1,54 @@
+.root {
+  @apply px-6;
+  @apply rounded;
+  @apply relative;
+  @apply w-full h-12;
+  @apply select-none;
+  @apply transition-colors;
+  @apply flex items-center justify-center;
+  @apply text-xs font-semibold uppercase tracking-wider;
+}
+
+.root.filled.primary {
+  @apply text-white;
+  @apply bg-blue-500;
+  @apply hover:bg-blue-400;
+}
+
+.root.filled.secondary {
+  @apply text-white;
+  @apply bg-slate-800;
+  @apply hover:bg-slate-900;
+}
+
+.root.outlined.primary {
+  @apply text-blue-500;
+  @apply border border-blue-500;
+  @apply hover:border-blue-400;
+}
+
+.root.outlined.secondary {
+  @apply text-slate-500;
+  @apply border border-slate-500;
+  @apply hover:border-slate-900 hover:text-slate-900;
+}
+
+.root.loading .span {
+  @apply opacity-0;
+}
+
+.root .loader {
+  @apply hidden;
+  @apply absolute;
+  @apply text-white;
+}
+
+.root.loading .loader {
+  @apply flex;
+}
+
+:global(.dark) .root.outlined.secondary {
+  @apply text-slate-500;
+  @apply border border-slate-500;
+  @apply hover:border-white hover:text-white;
+}
