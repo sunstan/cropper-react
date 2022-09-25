@@ -1,6 +1,5 @@
 import React, { CSSProperties, PointerEvent, useEffect, useRef, useState, WheelEvent } from 'react';
 import { canvasToBlob, getCanvas } from 'core/helpers/images.helpers';
-import useFaceDetection from 'core/hooks/useFaceDetection';
 import useBoolean from 'core/hooks/useBoolean';
 import { useTranslation } from 'react-i18next';
 import { ZoomIn, ZoomOut } from 'lib/Icons';
@@ -25,7 +24,6 @@ const Cropper: React.FC<Props> = ({ width, maxWidth, image, save }) => {
   const boxRef = useRef<HTMLDivElement>(null);
 
   const { t } = useTranslation();
-  const { detect, isDetecting, isReady } = useFaceDetection();
 
   const [clientX, setClientX] = useState<number>(0);
   const [clientY, setClientY] = useState<number>(0);
@@ -41,13 +39,15 @@ const Cropper: React.FC<Props> = ({ width, maxWidth, image, save }) => {
 
   const handleSave = async () => {
     setIsLoading.on();
-    const canvas = getCanvas(image, width, left, top, scale);
-    const faces = await detect(canvas);
-    setIsLoading.off();
-    if (!faces.length || faces.length > 1) return setError(t('ERRORS.FACE'));
-
-    const blob = await canvasToBlob(canvas);
-    save(blob);
+    try {
+      const canvas = getCanvas(image, width, left, top, scale);
+      const blob = await canvasToBlob(canvas);
+      save(blob);
+    } catch (e) {
+      return setError(t('ERRORS.UNKNOWN'));
+    } finally {
+      setIsLoading.off();
+    }
   };
 
   // EVENTS LISTENERS
@@ -187,8 +187,6 @@ const Cropper: React.FC<Props> = ({ width, maxWidth, image, save }) => {
           '--margins': maxWidth < width ? -((width - maxWidth) / 2) + 'px' : '0',
         } as CSSProperties}
       >
-        {!isReady && <div className={styles.loader} children={'loading'} />}
-
         <div className={styles.overlay}>
           <svg viewBox={`0 0 ${width} ${width}`} width='100%' height='100%'>
             <defs>
@@ -232,10 +230,9 @@ const Cropper: React.FC<Props> = ({ width, maxWidth, image, save }) => {
       {isLoading && 'TRUE'}
 
       <Button
+        loading={isLoading}
         onClick={handleSave}
         children={t('COMMONS.VALIDATE')}
-        loading={isLoading || isDetecting}
-        className={isDetecting ? styles.isDetecting : ''}
       />
 
     </div>

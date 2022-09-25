@@ -12,7 +12,7 @@ const locale: typeof template = {
     BUTTON: 'Parcourir vos dossiers'
   },
   ERRORS: {
-    FACE: 'Erreur de reconnaissance faciale.'
+    UNKNOWN: 'Une erreur inconnue est survenue'
   }
 };
 

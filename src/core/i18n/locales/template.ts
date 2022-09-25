@@ -10,7 +10,7 @@ const template = {
     BUTTON: ''
   },
   ERRORS: {
-    FACE: ''
+    UNKNOWN: ''
   }
 };
 
